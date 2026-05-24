@@ -1,6 +1,13 @@
 # CivicConnect Deployment Guide
 
-This project is arranged for a simple single-service deployment:
+This project supports two deployment styles:
+
+- Recommended: Vercel frontend and Render backend
+- Optional: single-service Node deployment
+
+For the recommended split deployment, see [VERCEL_RENDER_DEPLOYMENT.md](VERCEL_RENDER_DEPLOYMENT.md).
+
+Single-service deployment works like this:
 
 - React builds into `client/dist`
 - Express starts from `server/server.js`
@@ -47,12 +54,12 @@ Health check:
 GET /api/health
 ```
 
-## Render
+## Render Single-Service Option
 
-This repository includes `render.yaml`.
+This repository includes `render.yaml` for the recommended backend-only Render setup. For a single-service Render deployment, remove `rootDir: server` and use root-level commands:
 
 1. Push the project to GitHub.
-2. Create a new Render Blueprint or Web Service.
+2. Create a new Render Web Service.
 3. Use:
    - Build Command: `npm install && npm run build`
    - Start Command: `npm start`

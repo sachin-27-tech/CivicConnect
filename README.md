@@ -115,7 +115,15 @@ This starts:
 
 ## Production Deployment
 
-The project is deployment-ready as a single Node service.
+The recommended production setup is:
+
+- Frontend on Vercel from the `client` folder
+- Backend on Render from the `server` folder
+- MongoDB Atlas for the database
+
+See [docs/VERCEL_RENDER_DEPLOYMENT.md](docs/VERCEL_RENDER_DEPLOYMENT.md) for exact deployment steps.
+
+The project can also run as a single Node service.
 
 Build the React app:
 
@@ -134,7 +142,7 @@ When `NODE_ENV=production`, Express serves:
 - API routes from `/api`
 - Uploaded images from `/uploads`
 
-See [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md) for Render, Railway, and Heroku instructions.
+See [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md) for extra deployment notes.
 
 ## User Roles
 

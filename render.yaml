@@ -1,13 +1,16 @@
 services:
   - type: web
-    name: civicconnect
+    name: civicconnect-api
     env: node
+    rootDir: server
     plan: free
-    buildCommand: npm install && npm run build
+    buildCommand: npm install
     startCommand: npm start
     envVars:
       - key: NODE_ENV
         value: production
+      - key: CLIENT_URL
+        sync: false
       - key: MONGO_URI
         sync: false
       - key: JWT_SECRET

@@ -4,6 +4,8 @@ const notFound = (req, res, next) => {
 };
 
 const errorHandler = (err, req, res, next) => {
+  console.error(`${req.method} ${req.originalUrl}`, err.message);
+
   const statusCode = res.statusCode === 200 ? 500 : res.statusCode;
   res.status(statusCode).json({
     message: err.message || "Something went wrong on the server."
