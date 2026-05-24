@@ -30,17 +30,19 @@ function HomePage() {
     loadReports();
   }, []);
 
+  const safeReports = Array.isArray(reports) ? reports : [];
+
   const stats = useMemo(
     () => [
-      { label: "Total Reports", value: reports.length },
-      { label: "Pending", value: reports.filter((report) => report.status === "Pending").length },
-      { label: "In Progress", value: reports.filter((report) => report.status === "In Progress").length },
-      { label: "Resolved", value: reports.filter((report) => report.status === "Resolved").length }
+      { label: "Total Reports", value: safeReports.length },
+      { label: "Pending", value: safeReports.filter((report) => report.status === "Pending").length },
+      { label: "In Progress", value: safeReports.filter((report) => report.status === "In Progress").length },
+      { label: "Resolved", value: safeReports.filter((report) => report.status === "Resolved").length }
     ],
-    [reports]
+    [safeReports]
   );
 
-  const recentReports = reports.slice(0, 6);
+  const recentReports = safeReports.slice(0, 6);
 
   return (
     <div className="container page-stack">

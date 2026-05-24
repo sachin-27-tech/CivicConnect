@@ -11,7 +11,8 @@ L.Icon.Default.mergeOptions({
 });
 
 function IssueMap({ reports }) {
-  const reportsWithLocation = reports.filter((report) => report.latitude && report.longitude);
+  const safeReports = Array.isArray(reports) ? reports : [];
+  const reportsWithLocation = safeReports.filter((report) => report.latitude && report.longitude);
   const defaultCenter = reportsWithLocation.length
     ? [reportsWithLocation[0].latitude, reportsWithLocation[0].longitude]
     : [20.5937, 78.9629];
